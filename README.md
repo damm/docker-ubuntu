@@ -1,3 +1,7 @@
+### Build status
+[![Build Status](https://travis-ci.org/damm/docker-ubuntu.png)](https://travis-ci.org/damm/docker-ubuntu)
+
+
 damm/ubuntu
 ======
 
