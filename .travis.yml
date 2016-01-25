@@ -11,4 +11,4 @@ install:
 
 script:
  - docker images | grep damm/ubuntu
- - docker ps | grep uname
+ - docker ps -a | grep uname
