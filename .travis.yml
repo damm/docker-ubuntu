@@ -1,0 +1,14 @@
+language: python
+python:
+  - 2.7
+
+services:
+  - docker
+
+install:
+ - docker build -t damm/ubuntu .
+ - docker run -ti damm/ubuntu uname -r
+
+script:
+ - docker images | grep damm/ubuntu
+ - docker ps | grep uname
