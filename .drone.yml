@@ -1,14 +1,5 @@
-services:
-  docker:
-    image: docker:dind
-    privileged: true
-    command: [ "--storage-driver=vfs", "--tls=false" ]
-
 pipeline:
-  build:
-    image: docker
-    environment:
-    - DOCKER_HOST=tcp://0.0.0.0:2375
-    commands:
-    - docker --tls=false ps
-    - docker build -t damm/ubuntu:16.04 .
+  docker:
+    image: plugins/docker
+    repo: damm/docker-ubuntu
+    secrets: [ docker_username, docker_password ]
