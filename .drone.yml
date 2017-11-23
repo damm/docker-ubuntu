@@ -1,4 +1,5 @@
-image: dflemstr/drone-dind
-
-script:
-  - docker build -t damm/ubuntu:16.04 .
+pipeline:
+  docker:
+    image: plugins/docker
+    repo: damm/docker-ubuntu
+    secrets: [ docker_username, docker_password ]
