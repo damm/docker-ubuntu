@@ -1,13 +1,13 @@
-pipeline:
-  restore-cache:
-    image: drillster/drone-volume-cache
-    restore: true
-    mount:
-      - /var/lib/docker
-    volumes:
-      - /tmp/cache:/cache
+services:
+  docker:
+    image: docker:1.12-dind
+    privileged: true
+    command: [ "--storage-driver=vfs", "--tls=false" ]
 
-build:
-  image: dflemstr/drone-dind
-  commands:
-  - docker build -t damm/ubuntu:16.04 .
+pipeline:
+  build:
+    image: docker:1.12-dind
+    environment:
+    - DOCKER_HOST=tcp://0.0.0.0:2375
+    commands:
+    - docker build -t damm/ubuntu:16.04 .
