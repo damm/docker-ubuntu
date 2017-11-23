@@ -1,4 +1,13 @@
-image: dflemstr/drone-dind
+pipeline:
+  restore-cache:
+    image: drillster/drone-volume-cache
+    restore: true
+    mount:
+      - /var/lib/docker
+    volumes:
+      - /tmp/cache:/cache
 
-script:
+build:
+  image: dflemstr/drone-dind
+  commands:
   - docker build -t damm/ubuntu:16.04 .
