@@ -1,0 +1,4 @@
+image: dflemstr/drone-dind
+
+script:
+  - docker build -t damm/ubuntu:16.04 .
